@@ -1,0 +1,26 @@
+baseURL: https://alexashery.com/
+languageCode: en-us
+title: AlexAshery
+theme: coder
+metaDataFormat: yaml
+
+params:
+  author: Alex Ashery
+  info: Software Engineer
+  avatarUrl: https://site.alexashery.com/images/avatar.jpg
+  jsonResumeUrl: https://raw.githubusercontent.com/alex-ashery/resume-site/main/resume.yaml
+  social:
+    - name: Github
+      icon: fa-brands fa-github fa-2x
+      weight: 1
+      url: https://github.com/alex-ashery
+    - name: LinkedIn
+      icon: fa-brands fa-linkedin fa-2x
+      weight: 2
+      url: https://www.linkedin.com/in/alex-ashery-1b219a109/
+
+menu:
+  main:
+    - name: Resume
+      weight: 1
+      url: /resume/
