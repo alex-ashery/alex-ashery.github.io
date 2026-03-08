@@ -1,0 +1,14 @@
+{
+  "name": "personal-site",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "build:js": "esbuild assets/js/resume.js --bundle --format=iife --global-name=ResumeApp --minify --outfile=static/js/resume.bundle.js"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.10"
+  }
+}
