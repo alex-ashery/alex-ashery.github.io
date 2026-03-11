@@ -1,0 +1,163 @@
+.page #resume-root > section {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.page #resume-root > section:first-child {
+  margin-top: 0;
+}
+
+.page #resume-root .resume-section-divider {
+  border: 0;
+  border-top: 1px solid var(--alt-bg-color, currentColor);
+  margin-top: 0.15rem;
+  margin-bottom: 1.0rem;
+}
+
+.page #resume-root .resume-section h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.page #resume-root .resume-section > ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  padding-left: 1.0rem;
+  list-style: none;
+}
+
+.page #resume-root .resume-section > ul > li {
+  margin-top: 0.5rem;
+  padding-left: 0;
+}
+
+.page #resume-root .resume-section > ul > li:first-child {
+  margin-top: 0;
+}
+
+.page #resume-root .resume-item-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.6rem;
+  line-height: 1.25;
+}
+
+.page #resume-root .resume-item-title {
+  font-weight: 700;
+}
+
+.page #resume-root .resume-item-period {
+  flex-shrink: 0;
+  white-space: nowrap;
+  opacity: 0.85;
+}
+
+.page #resume-root .resume-item-subtitle {
+  margin-top: 0.05rem;
+  font-style: italic;
+  line-height: 1.2;
+}
+
+.page #resume-root .resume-item-details {
+  margin-top: 0.2rem;
+}
+
+.page #resume-root .resume-job-summary {
+  margin-top: 1.0rem;
+  margin-bottom: 1.0rem;
+  line-height: 1.3;
+}
+
+.page #resume-root .resume-item-extra {
+  margin-top: 0.15rem;
+}
+
+.page #resume-root .resume-highlights-toggle {
+  appearance: none;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font: inherit;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  padding: 0.2rem 0.7rem;
+  margin-left: 0.6rem;
+  vertical-align: baseline;
+}
+
+.page #resume-root .resume-highlights-toggle::before {
+  content: "▸";
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 0.15s ease;
+}
+
+.page #resume-root .resume-highlights-toggle[aria-expanded="true"]::before {
+  transform: rotate(90deg);
+}
+
+.page #resume-root .resume-highlights-toggle:hover,
+.page #resume-root .resume-highlights-toggle:focus-visible {
+  color: var(--link-color, inherit);
+  border-color: var(--link-color, currentColor);
+}
+
+.page #resume-root .resume-item-details ul {
+  margin-top: 0.3rem;
+  margin-bottom: 0;
+  line-height: 1.3;
+}
+
+.page #resume-root .resume-section-certificates > ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.1rem;
+  padding-left: 0;
+}
+
+.page #resume-root .resume-section-certificates > ul > li {
+  margin-top: 0;
+  width: var(--resume-credly-badge-width, 150px);
+  flex: 0 0 var(--resume-credly-badge-width, 150px);
+}
+
+.page #resume-root .resume-certificate-card {
+  border: 1px solid transparent;
+  border-radius: 0;
+  padding: 0;
+}
+
+.page #resume-root .resume-certificate-title {
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.page #resume-root .resume-certificate-issuer {
+  margin-top: 0.2rem;
+  font-style: italic;
+  line-height: 1.25;
+}
+
+.page #resume-root .resume-certificate-date {
+  margin-top: 0.15rem;
+  opacity: 0.85;
+  line-height: 1.2;
+}
+
+@media (max-width: 640px) {
+  .page #resume-root .resume-item-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
+}

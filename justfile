@@ -1,10 +1,10 @@
-hugo-js-build:
+js-build:
 	cd site && npm run build:js
 
-hugo-serve:
+serve:
 	cd site && npm run build:js
 	hugo server --source site
 
-hugo-build:
+build:
 	cd site && npm run build:js
 	hugo --source site

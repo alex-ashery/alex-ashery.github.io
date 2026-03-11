@@ -8,7 +8,9 @@ params:
   author: Alex Ashery
   info: Software Engineer
   avatarUrl: https://site.alexashery.com/images/avatar.jpg
-  jsonResumeUrl: https://raw.githubusercontent.com/alex-ashery/resume-site/main/resume.yaml
+  jsonResumeUrl: https://raw.githubusercontent.com/alex-ashery/resume/main/resume.yaml
+  customSCSS:
+    - scss/resume.scss
   social:
     - name: Github
       icon: fa-brands fa-github fa-2x
