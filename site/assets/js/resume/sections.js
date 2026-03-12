@@ -89,24 +89,38 @@ export const renderSkillsSection = (skills) =>
 
 export const renderCertificatesSection = (certificates) => {
   let needsCredlyEmbedScript = false;
-  const html = renderList(
-    "Certificates",
-    certificates,
-    (cert) => {
-      const certUrl = String(cert?.url || "");
-      const badgeId = extractCredlyBadgeId(certUrl);
+  const rows = Array.isArray(certificates)
+    ? certificates
+        .map((cert) => {
+          const certUrl = String(cert?.url || "");
+          const badgeId = extractCredlyBadgeId(certUrl);
 
-      if (!badgeId) return "";
-      needsCredlyEmbedScript = true;
+          if (!badgeId) return "";
+          needsCredlyEmbedScript = true;
 
-      return `
-        <div class="resume-certificate-card">
-          <div data-iframe-width="${CREDLY_BADGE_WIDTH}" data-iframe-height="${CREDLY_BADGE_HEIGHT}" data-share-badge-id="${escapeHtml(badgeId)}" data-share-badge-host="https://www.credly.com"></div>
-        </div>
+          return `
+            <div class="resume-certificate-item">
+              <div class="resume-certificate-card">
+                <div data-iframe-width="${CREDLY_BADGE_WIDTH}" data-iframe-height="${CREDLY_BADGE_HEIGHT}" data-share-badge-id="${escapeHtml(badgeId)}" data-share-badge-host="https://www.credly.com"></div>
+              </div>
+            </div>
+          `;
+        })
+        .filter(Boolean)
+    : [];
+
+  const html =
+    rows.length === 0
+      ? ""
+      : `
+        <section class="resume-section resume-section-certificates">
+          <h3>Certificates</h3>
+          <hr class="resume-section-divider" />
+          <div class="resume-certificate-grid">
+            ${rows.join("")}
+          </div>
+        </section>
       `;
-    },
-    "certificates",
-  );
 
   return { html, needsCredlyEmbedScript };
 };

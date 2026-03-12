@@ -47,6 +47,18 @@ if (!endpoint) {
       const basics = data?.basics ?? {};
       const name = basics?.name || data?.name || "Resume";
       const label = basics?.label ? `<p>${escapeHtml(basics.label)}</p>` : "";
+      const profiles = Array.isArray(basics?.profiles)
+        ? basics.profiles
+            .map((profile) => {
+              const network = escapeHtml(profile?.network || "");
+              const url = escapeHtml(profile?.url || "");
+              if (!network || !url) return "";
+              return `<a href="${url}" target="_blank" rel="noopener">${network}</a>`;
+            })
+            .filter(Boolean)
+        : [];
+      const profilesHtml =
+        profiles.length > 0 ? `<div class="resume-profile-links">${profiles.join("<span aria-hidden=\"true\"> &bull; </span>")}</div>` : "";
       const summary = basics?.summary ? `<p>${escapeHtml(basics.summary)}</p>` : "";
 
       const workHtml = renderWorkSection(data?.work, buildDetailList);
@@ -58,6 +70,7 @@ if (!endpoint) {
         <section>
           <h2>${escapeHtml(name)}</h2>
           ${label}
+          ${profilesHtml}
           ${summary}
         </section>
         ${workHtml}
