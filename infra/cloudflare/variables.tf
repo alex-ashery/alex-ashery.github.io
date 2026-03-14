@@ -43,13 +43,13 @@ variable "github_pages_origin" {
 variable "additional_dns_records" {
   description = "Additional DNS records to manage on top of the default GitHub Pages records."
   type = map(object({
-    name    = string
-    type    = string
-    content = string
+    name     = string
+    type     = string
+    content  = string
     priority = optional(number)
-    ttl     = optional(number, 1)
-    proxied = optional(bool, false)
-    comment = optional(string)
+    ttl      = optional(number, 1)
+    proxied  = optional(bool, false)
+    comment  = optional(string)
   }))
   default = {}
 }

@@ -9,4 +9,5 @@ with pkgs; [
   sops
   terraform-ls
   vscode-langservers-extracted
+  pre-commit
 ]

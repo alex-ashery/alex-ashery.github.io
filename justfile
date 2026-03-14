@@ -14,14 +14,29 @@ build:
 cloudflare-fmt:
 	tofu -chdir=infra/cloudflare fmt -recursive
 
-infra-init backend="backend.hcl":
+cf-init backend="backend.hcl":
 	./scripts/with-cloudflare-env.sh tofu -chdir=infra/cloudflare init -reconfigure -backend-config={{backend}}
 
-infra-plan:
+cf-plan:
 	./scripts/with-cloudflare-env.sh tofu -chdir=infra/cloudflare plan
 
-infra-apply:
+cf-apply:
 	./scripts/with-cloudflare-env.sh tofu -chdir=infra/cloudflare apply
 
-infra-import address id:
+cf-import address id:
 	./scripts/with-cloudflare-env.sh tofu -chdir=infra/cloudflare import '{{address}}' '{{id}}'
+
+gh-fmt:
+	tofu -chdir=infra/github fmt -recursive
+
+gh-init backend="backend.hcl":
+	./scripts/with-github-env.sh tofu -chdir=infra/github init -reconfigure -backend-config={{backend}}
+
+gh-plan:
+	./scripts/with-github-env.sh tofu -chdir=infra/github plan
+
+gh-apply:
+	./scripts/with-github-env.sh tofu -chdir=infra/github apply
+
+gh-import address id:
+	./scripts/with-github-env.sh tofu -chdir=infra/github import '{{address}}' '{{id}}'

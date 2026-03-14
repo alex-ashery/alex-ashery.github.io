@@ -32,26 +32,26 @@ Secrets are stored with `sops` using the repo-level [`.sops.yaml`](/Users/aasher
 Create the encrypted secret file from the example:
 
 ```bash
-cp secrets/cloudflare.sops.yaml.example secrets/cloudflare.sops.yaml
-sops secrets/cloudflare.sops.yaml
+cp secrets/infra.sops.yaml.example secrets/infra.sops.yaml
+sops secrets/infra.sops.yaml
 ```
 
 Populate these keys:
 
-- `cloudflare_api_token`
-- `tofu_state_r2_access_key_id`
-- `tofu_state_r2_secret_access_key`
+- `cloudflare.api_token`
+- `tofu_state.r2_access_key_id`
+- `tofu_state.r2_secret_access_key`
 
 The dev shell provides `sops`, `age`, and `tofu`.
 
-The `just infra-*` commands decrypt and export the required environment variables automatically from `secrets/cloudflare.sops.yaml`.
+The `just infra-*` commands decrypt and export the required environment variables automatically from `secrets/infra.sops.yaml`.
 
 If you want to run `tofu` directly instead of using `just`, export:
 
 ```bash
-export CLOUDFLARE_API_TOKEN="$(sops --decrypt --extract '["cloudflare_api_token"]' secrets/cloudflare.sops.yaml)"
-export AWS_ACCESS_KEY_ID="$(sops --decrypt --extract '["tofu_state_r2_access_key_id"]' secrets/cloudflare.sops.yaml)"
-export AWS_SECRET_ACCESS_KEY="$(sops --decrypt --extract '["tofu_state_r2_secret_access_key"]' secrets/cloudflare.sops.yaml)"
+export CLOUDFLARE_API_TOKEN="$(sops --decrypt --extract '["cloudflare"]["api_token"]' secrets/infra.sops.yaml)"
+export AWS_ACCESS_KEY_ID="$(sops --decrypt --extract '["tofu_state"]["r2_access_key_id"]' secrets/infra.sops.yaml)"
+export AWS_SECRET_ACCESS_KEY="$(sops --decrypt --extract '["tofu_state"]["r2_secret_access_key"]' secrets/infra.sops.yaml)"
 ```
 
 OpenTofu reads:
@@ -62,7 +62,7 @@ OpenTofu reads:
 ## Site Stack
 
 1. Enter the dev shell with `direnv allow` or `nix develop`.
-2. Create `secrets/cloudflare.sops.yaml` from [`secrets/cloudflare.sops.yaml.example`](/Users/aashery/Development/alex-ashery/personal-site/secrets/cloudflare.sops.yaml.example).
+2. Create `secrets/infra.sops.yaml` from [`secrets/infra.sops.yaml.example`](/Users/aashery/Development/alex-ashery/personal-site/secrets/infra.sops.yaml.example).
 3. Provision a private shared R2 bucket for OpenTofu state outside this repo.
 4. Review [`backend.hcl`](/Users/aashery/Development/alex-ashery/personal-site/infra/cloudflare/backend.hcl) and confirm the bucket name, key path, and R2 endpoint.
 5. Copy [`terraform.tfvars.example`](/Users/aashery/Development/alex-ashery/personal-site/infra/cloudflare/terraform.tfvars.example) to `infra/cloudflare/terraform.tfvars`.
@@ -72,7 +72,7 @@ OpenTofu reads:
 9. Run `just infra-plan`.
 10. Run `just infra-apply`.
 
-The `just infra-*` commands load the Cloudflare API token and R2 backend credentials from `secrets/cloudflare.sops.yaml` automatically.
+The `just infra-*` commands load the Cloudflare API token and R2 backend credentials from `secrets/infra.sops.yaml` automatically.
 
 The site stack configures:
 
