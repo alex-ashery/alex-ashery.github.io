@@ -3,3 +3,9 @@ site/.hugo_build.lock
 site/public
 site/node_modules
 site/resources/_gen/
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+infra/cloudflare/site/backend.hcl
+secrets/rendered/
